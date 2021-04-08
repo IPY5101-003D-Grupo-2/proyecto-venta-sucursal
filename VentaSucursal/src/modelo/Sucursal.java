@@ -14,6 +14,8 @@ public class Sucursal {
     }
 
     public void setCod(String cod) {
+        // TODO: Validar que el código de sucursal sea 1 letra y 3 números
+        // Ej: A001
         this.cod = cod;
     }
 

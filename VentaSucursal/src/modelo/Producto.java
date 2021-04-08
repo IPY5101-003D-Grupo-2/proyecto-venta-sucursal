@@ -2,53 +2,63 @@ package modelo;
 
 public class Producto {
 
-    private String SKU;
-    private String Tipo;
-    private String Producto;
-    private double Precio;
+    private String sku;
+    private String tipo;
+    private String producto;
+    private double precio;
 
     public Producto() {
-        this.SKU = "No info";
-        this.Tipo = "No info";
-        this.Producto = "No info";
-        this.Precio = 0.0;
+        this.sku = "No info";
+        this.tipo = "No info";
+        this.producto = "No info";
+        this.precio = 0.0;
     }
 
-    public String getSKU() {
-        return SKU;
+    public String getSku() {
+        return sku;
     }
 
-    public void setSKU(String SKU) {
-        this.SKU = SKU;
+    public void setSku(String sku) {
+        this.sku = sku;
     }
 
     public String getTipo() {
-        return Tipo;
+        return tipo;
     }
 
-    public void setTipo(String Tipo) {
-        this.Tipo = Tipo;
+    public void setTipo(String tipo) {
+        if (tipo.equalsIgnoreCase("Repuesto")){
+            this.tipo = "Repuesto";
+            return;
+        }
+        if (tipo.equalsIgnoreCase("Producto")){
+            this.tipo = "Producto";
+            return;
+        }
+        this.tipo = "No info";
     }
 
     public String getProducto() {
-        return Producto;
+        return producto;
     }
 
-    public void setProducto(String Producto) {
-        this.Producto = Producto;
+    public void setProducto(String producto) {
+        this.producto = producto;
     }
 
     public double getPrecio() {
-        return Precio;
+        return precio;
     }
 
-    public void setPrecio(double Precio) {
-        this.Precio = Precio;
+    public void setPrecio(double precio) {
+        if (precio < 0 ){
+            this.precio = 0;
+        }
+        this.precio = precio;
     }
 
     @Override
     public String toString() {
-        return "Producto{" + "SKU=" + SKU + ", Tipo=" + Tipo + ", Producto=" + Producto + ", Precio=" + Precio + '}';
+        return "Producto{" + "sku=" + sku + ", tipo=" + tipo + ", producto=" + producto + ", precio=" + precio + '}';
     }
-
 }
