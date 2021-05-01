@@ -13,6 +13,7 @@ public class VentanaVenta extends javax.swing.JFrame {
      */
     public VentanaVenta() {
         initComponents();
+        btnCandado.setVisible(false);
     }
 
     /**
@@ -33,8 +34,9 @@ public class VentanaVenta extends javax.swing.JFrame {
         jTable1 = new javax.swing.JTable();
         jTextField3 = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        cbSucursal = new javax.swing.JComboBox<>();
         jButton3 = new javax.swing.JButton();
+        btnCandado = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -75,9 +77,36 @@ public class VentanaVenta extends javax.swing.JFrame {
 
         jLabel2.setText("jLabel2");
 
-        jComboBox1.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbSucursal.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbSucursal.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                cbSucursalItemStateChanged(evt);
+            }
+        });
+        cbSucursal.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                cbSucursalMouseClicked(evt);
+            }
+        });
+        cbSucursal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cbSucursalActionPerformed(evt);
+            }
+        });
 
         jButton3.setText("jButton3");
+
+        btnCandado.setText("candado");
+        btnCandado.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                btnCandadoMouseClicked(evt);
+            }
+        });
+        btnCandado.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCandadoActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -98,7 +127,7 @@ public class VentanaVenta extends javax.swing.JFrame {
                         .addComponent(jButton2)
                         .addGap(4, 4, 4))
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 33, Short.MAX_VALUE)
+                        .addGap(0, 0, Short.MAX_VALUE)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                                 .addGroup(layout.createSequentialGroup()
@@ -107,8 +136,10 @@ public class VentanaVenta extends javax.swing.JFrame {
                                     .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 537, javax.swing.GroupLayout.PREFERRED_SIZE))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(324, 324, 324)
+                                .addComponent(cbSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, 140, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addComponent(btnCandado)
+                                .addGap(241, 241, 241)
                                 .addComponent(jButton3)))))
                 .addGap(18, 18, 18))
         );
@@ -133,7 +164,8 @@ public class VentanaVenta extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton3)
-                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(cbSucursal, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(btnCandado))
                 .addGap(28, 28, 28))
         );
 
@@ -154,6 +186,28 @@ public class VentanaVenta extends javax.swing.JFrame {
             txtCliente.setText(Nombre);
         }
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void cbSucursalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cbSucursalActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_cbSucursalActionPerformed
+
+    private void cbSucursalMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_cbSucursalMouseClicked
+        // TODO ADD YOUR mouse on click code here;
+    }//GEN-LAST:event_cbSucursalMouseClicked
+
+    private void cbSucursalItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_cbSucursalItemStateChanged
+        cbSucursal.setEnabled(false);
+        btnCandado.setVisible(true);
+    }//GEN-LAST:event_cbSucursalItemStateChanged
+
+    private void btnCandadoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCandadoActionPerformed
+        cbSucursal.setEnabled(true);
+        btnCandado.setVisible(false);
+    }//GEN-LAST:event_btnCandadoActionPerformed
+
+    private void btnCandadoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_btnCandadoMouseClicked
+        // TODO add your handling code here:
+    }//GEN-LAST:event_btnCandadoMouseClicked
 
     /**
      * @param args the command line arguments
@@ -191,10 +245,11 @@ public class VentanaVenta extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnCandado;
+    private javax.swing.JComboBox<String> cbSucursal;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JButton jButton3;
-    private javax.swing.JComboBox<String> jComboBox1;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
