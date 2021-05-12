@@ -6,6 +6,7 @@
 package vista;
 
 import java.util.ArrayList;
+import javax.swing.SpringLayout;
 import javax.swing.table.DefaultTableModel;
 import modelo.Producto;
 
@@ -198,7 +199,7 @@ public class VentanaProducto extends javax.swing.JFrame {
         Producto = new javax.swing.JRadioButton();
         Repuesto = new javax.swing.JRadioButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
 
         jLabel1.setText("SKU");
 
@@ -306,7 +307,7 @@ public class VentanaProducto extends javax.swing.JFrame {
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 321, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(bntAgregarVenta)
-                .addContainerGap(9, Short.MAX_VALUE))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
 
         pack();
@@ -333,17 +334,39 @@ public class VentanaProducto extends javax.swing.JFrame {
 
     private void bntAgregarVentaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bntAgregarVentaActionPerformed
         int filtro;
-        if (this.Producto.isSelected()) {
-            filtro = 1;
+        Producto producto = new Producto();
+        if (this.Producto.isSelected()) { 
+            producto.setUrl(tbProducto.getValueAt(tbProducto.getSelectedRow(), 0).toString());
+            producto.setSku(tbProducto.getValueAt(tbProducto.getSelectedRow(), 1).toString());
+            producto.setTipo(tbProducto.getValueAt(tbProducto.getSelectedRow(), 2).toString());
+            producto.setProducto(tbProducto.getValueAt(tbProducto.getSelectedRow(), 3).toString());
+            producto.setPrecio(Double.valueOf(tbProducto.getValueAt(tbProducto.getSelectedRow(), 4).toString()));
+            producto.setCaracteristica(tbProducto.getValueAt(tbProducto.getSelectedRow(), 5).toString());
+            producto.setModelo(tbProducto.getValueAt(tbProducto.getSelectedRow(), 6).toString());
+            producto.setModo(tbProducto.getValueAt(tbProducto.getSelectedRow(), 7).toString());
+            producto.setAlimentacion(tbProducto.getValueAt(tbProducto.getSelectedRow(), 8).toString());
+            producto.setConsumo(tbProducto.getValueAt(tbProducto.getSelectedRow(), 9).toString());
+            producto.setCapacidadNominal(tbProducto.getValueAt(tbProducto.getSelectedRow(), 10).toString());
+            producto.setCaudal(tbProducto.getValueAt(tbProducto.getSelectedRow(), 11).toString());
+            producto.setRuido(tbProducto.getValueAt(tbProducto.getSelectedRow(), 12).toString());
+            producto.setDimensiones(tbProducto.getValueAt(tbProducto.getSelectedRow(), 13).toString());
+            producto.setPeso(tbProducto.getValueAt(tbProducto.getSelectedRow(), 14).toString());
+            producto.setmCaneria(tbProducto.getValueAt(tbProducto.getSelectedRow(), 15).toString());
+            producto.setConexionCaneria(tbProducto.getValueAt(tbProducto.getSelectedRow(), 16).toString());
+            producto.setFicha(tbProducto.getValueAt(tbProducto.getSelectedRow(), 17).toString());
+            producto.setUrlImg(tbProducto.getValueAt(tbProducto.getSelectedRow(), 18).toString());
         } else {
-            filtro = 2;
+            producto.setUrl(tbProducto.getValueAt(tbProducto.getSelectedRow(), 0).toString());
+            producto.setSku(tbProducto.getValueAt(tbProducto.getSelectedRow(), 1).toString());
+            producto.setTipo(tbProducto.getValueAt(tbProducto.getSelectedRow(), 2).toString());
+            producto.setProducto(tbProducto.getValueAt(tbProducto.getSelectedRow(), 3).toString());
+            producto.setPrecio(Double.valueOf(tbProducto.getValueAt(tbProducto.getSelectedRow(), 4).toString()));
+            producto.setCaracteristica(tbProducto.getValueAt(tbProducto.getSelectedRow(), 5).toString());
+            producto.setUrlImg(tbProducto.getValueAt(tbProducto.getSelectedRow(), 6).toString());
         }
-        String Nombre = tbProducto.getValueAt(tbProducto.getSelectedRow(), 3).toString();
-        int Cantidad = 1;
-        String precio = tbProducto.getValueAt(tbProducto.getSelectedRow(), 4).toString();
-        System.out.println(Nombre);
-        System.out.println(Cantidad);
-        System.out.println(precio);
+        VentanaVenta venta = new VentanaVenta();
+        venta.cargarDatos(producto);
+        this.setVisible(false);
     }//GEN-LAST:event_bntAgregarVentaActionPerformed
 
     /**
